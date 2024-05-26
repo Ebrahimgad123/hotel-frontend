@@ -21,7 +21,7 @@ const Register = () => {
       };
 
       try {
-        await axios.post('http://localhost:5010/api/register', user);
+        await axios.post('https://backendhotel-1.onrender.com/api/register', user);
         alert('تم التسجيل بنجاح');
         setUsername('');
         setEmail('');

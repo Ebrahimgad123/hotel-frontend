@@ -14,7 +14,7 @@ const Login = () => {
       password,
     };
     try {
-      const result = (await axios.post('http://localhost:5010/api/login', user)).data;
+      const result = (await axios.post('https://backendhotel-1.onrender.com/api/login', user)).data;
       localStorage.setItem('currentUser',JSON.stringify(result))
       navigate('/home')
   } catch (error) {

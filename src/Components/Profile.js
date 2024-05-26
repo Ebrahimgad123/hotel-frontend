@@ -62,7 +62,7 @@ const MyBookings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:5010/api/getBookingByUserId', { userId: user._id });
+        const response = await axios.post('https://backendhotel-1.onrender.com/api/getBookingByUserId', { userId: user._id });
         setRooms(response.data);
         console.log(response.data);
       } catch (error) {

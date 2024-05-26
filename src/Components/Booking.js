@@ -28,13 +28,14 @@ const Booking = () => {
   const username = currentUserData
     ? JSON.parse(currentUserData)?.temp?.username
     : "";
-
+    //  "http://localhost:5010/api/getAllRoom"
   // Fetch data and set loading state
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5010/api/getAllRoom"
+
+          "https://backendhotel-1.onrender.com/api/getAllRoom"
         );
         setData(response.data);
         console.log(response.data);
@@ -84,7 +85,7 @@ const Booking = () => {
           }, 500);
 
           const result = await axios.post(
-            "http://localhost:5010/api/bookings",
+            "https://backendhotel-1.onrender.com/api/bookings",
             bookingDetails
           );
 
