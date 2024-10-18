@@ -1,10 +1,7 @@
-
-
 /* Styles for screens smaller than 500px */
 @media screen and (max-width: 500px) {
-    .ant-picker-panel {
-      transform: scale(0.8); /* تصغير لوحة الأيام بنسبة معينة */
-      transform-origin: top left; /* تحديد نقطة البداية للتصغير */
-    }
+  .ant-picker-panel {
+    transform: scale(0.8); /* تصغير لوحة الأيام بنسبة معينة */
+    transform-origin: top left; /* تحديد نقطة البداية للتصغير */
   }
-    
+}

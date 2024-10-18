@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import './Login.css'; // استيراد ملف الستايل
-import axios from 'axios';
-import { useNavigate } from 'react-router';
+import React, { useState } from "react";
+import "./Login.css"; // استيراد ملف الستايل
+import axios from "axios";
+import { useNavigate } from "react-router";
 const Login = () => {
-  const navigate= useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -14,14 +14,14 @@ const Login = () => {
       password,
     };
     try {
-      const result = (await axios.post('https://backendhotel-1.onrender.com/api/login', user)).data;
-      localStorage.setItem('currentUser',JSON.stringify(result))
-      navigate('/home')
-  } catch (error) {
-      console.log('error', error);
-      alert('There is wrong with email or password')
-    } 
-    
+      const result = (await axios.post("https://hotel--backend.up.railway.app/login", user))
+        .data;
+      localStorage.setItem("currentUser", JSON.stringify(result));
+      navigate("/home");
+    } catch (error) {
+      console.log("error", error);
+      alert("There is wrong with email or password");
+    }
   }
 
   return (
@@ -47,4 +47,3 @@ const Login = () => {
 };
 
 export default Login;
-

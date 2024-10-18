@@ -1,9 +1,9 @@
 body {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 nav .container .navbar-brand {
@@ -16,7 +16,7 @@ nav .container .navbar-collapse .navbar-nav .nav-item {
 
 nav .container .navbar-collapse .navbar-nav .nav-item a {
   font-size: 16px;
-  color: #002E50;
+  color: #002e50;
 }
 
 header {
@@ -32,14 +32,14 @@ header .container {
 
 header .container h1 {
   color: #ffffff;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: bold;
   font-size: 64px;
 }
 
 header .container .btn-book-now {
   color: #ffffff;
-  background-color: #189BFA;
+  background-color: #189bfa;
 }
 
 header .container .btn-book-now:hover {
@@ -49,8 +49,8 @@ header .container .btn-book-now:hover {
 @media (max-width: 600px) {
   header header {
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
   header h1 {
     text-align: center;
@@ -61,11 +61,11 @@ header .container .btn-book-now:hover {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
@@ -76,7 +76,7 @@ header .container .btn-book-now:hover {
 
 .section-rooms h2 {
   font-weight: 400;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .section-rooms p {
@@ -99,7 +99,7 @@ header .container .btn-book-now:hover {
   height: 35px;
   margin: 174px 0 30px 30px;
   color: #ffffff;
-  background-color: #189BFA;
+  background-color: #189bfa;
 }
 
 .section-rooms .btn-book-now:hover {
@@ -118,7 +118,7 @@ header .container .btn-book-now:hover {
 
 .section-facility h2 {
   font-weight: 400;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .section-facility h5 {
@@ -138,7 +138,7 @@ header .container .btn-book-now:hover {
 
 .section-gallery h2 {
   font-weight: 400;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .section-gallery p {
@@ -157,7 +157,7 @@ header .container .btn-book-now:hover {
 
 .section-feedback h2 {
   font-weight: 400;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .section-feedback p {
@@ -199,18 +199,18 @@ header .container .btn-book-now:hover {
 
 .section-help .btn-i-need-help {
   color: #646464;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
 }
 
 .section-help .btn-i-need-help:hover {
-  color: #EAEAEA;
-  background-color: #BFBFBF;
+  color: #eaeaea;
+  background-color: #bfbfbf;
 }
 
 .section-help .btn-book-now {
   height: 35px;
   color: #ffffff;
-  background-color: #189BFA;
+  background-color: #189bfa;
 }
 
 .section-help .btn-book-now:hover {
@@ -226,7 +226,7 @@ header .container .btn-book-now:hover {
 footer {
   margin-top: 100px;
   padding: 50px 0 23px 0;
-  background-color: #002E50;
+  background-color: #002e50;
   color: #ffffff;
 }
 

@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { Button, Col, Container, Row, Spinner, ProgressBar } from "react-bootstrap";
+import {Button,Col,Container,Row,Spinner,ProgressBar,} from "react-bootstrap";
 import "./Booking.css";
 import moment from "moment";
 import StripeCheckout from "react-stripe-checkout";
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 import Loader from "./Loader";
 
 const Booking = () => {
@@ -25,18 +25,13 @@ const Booking = () => {
   const totalDays = toDateMoment.diff(fromDateMoment, "days") + 1;
   const totalAmount = totalDays * room.rentPerDay;
   const currentUserData = localStorage.getItem("currentUser");
-  const username = currentUserData
-    ? JSON.parse(currentUserData)?.temp?.username
-    : "";
-    //  "http://localhost:5010/api/getAllRoom"
+  const username = currentUserData? JSON.parse(currentUserData)?.temp?.username: "";
+
   // Fetch data and set loading state
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-
-          "https://backendhotel-1.onrender.com/api/getAllRoom"
-        );
+        const response = await axios.get("https://hotel--backend.up.railway.app/api/getAllRoom",);
         setData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -85,16 +80,16 @@ const Booking = () => {
           }, 500);
 
           const result = await axios.post(
-            "https://backendhotel-1.onrender.com/api/bookings",
-            bookingDetails
+            "https://hotel--backend.up.railway.app/api/bookings",
+            bookingDetails,
           );
 
           clearInterval(progressInterval); // Clear the progress interval
 
           if (result) {
             Swal.fire({
-              icon: 'success',
-              title: 'Congratulations..!',
+              icon: "success",
+              title: "Congratulations..!",
               text: `The operation has been completed successfully. We are so happy and ${totalAmount}$ has been deducted from your credit.`,
             }).then(() => {
               setIsProcessing(false);
@@ -105,9 +100,9 @@ const Booking = () => {
           }
         } catch (error) {
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...!',
-            text: 'An error occurred during payment. Please try again.',
+            icon: "error",
+            title: "Oops...!",
+            text: "An error occurred during payment. Please try again.",
           }).then(() => {
             setIsProcessing(false);
             setShowLoader(false);
@@ -116,9 +111,9 @@ const Booking = () => {
         }
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...!',
-          text: 'Please log in or register first.',
+          icon: "error",
+          title: "Oops...!",
+          text: "Please log in or register first.",
         }).then(() => {
           setIsProcessing(false);
           setShowLoader(false);
@@ -127,9 +122,9 @@ const Booking = () => {
       }
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...!',
-        text: 'Please log in or register first.',
+        icon: "error",
+        title: "Oops...!",
+        text: "Please log in or register first.",
       }).then(() => {
         setIsProcessing(false);
         setShowLoader(false);
@@ -175,52 +170,50 @@ const Booking = () => {
               <p>MaxCount: {room.maxCount}</p>
             </b>
           </div>
-         <div id='has'>
-           <div>
-            <h3>Amount</h3>
-            <hr></hr>
-            <b>
-              <p>Total Days: {totalDays + " Days"}</p>
-              <p>Rent per Days: {room.rentPerDay}</p> 
-              <p>Total Amount: {totalAmount}$</p>
-            </b>
+          <div id="has">
+            <div>
+              <h3>Amount</h3>
+              <hr></hr>
+              <b>
+                <p>Total Days: {totalDays + " Days"}</p>
+                <p>Rent per Days: {room.rentPerDay}</p>
+                <p>Total Amount: {totalAmount}$</p>
+              </b>
+            </div>
+            <div>
+              {localStorage.getItem("currentUser") ? (
+                <>
+                  <StripeCheckout
+                    token={onToken}
+                    stripeKey="pk_test_51Oeb4QGKxFmziudOyHXfdMKk0BEdBfLtYZmwlYkyEgN5zvEH0Usk9dFMUV68RmBzKEbs5Xg3vGUestw4CPiMST5g00kSHQ6EV6"
+                    name={room.name}
+                    amount={totalAmount * 100}
+                    currency="USD"
+                    disabled={isProcessing}
+                  />
+                  {showLoader && (
+                    <>
+                      <div style={{ marginTop: "10px" }}>
+                        <ProgressBar now={progress} label={`${progress}%`} />
+                      </div>
+                      <div style={{ marginTop: "10px" }}>
+                        <Spinner animation="border" variant="primary" />
+                      </div>
+                    </>
+                  )}
+                </>
+              ) : (
+                <Button variant="danger">
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </Button>
+              )}
+            </div>
           </div>
-          <div>
-          {localStorage.getItem("currentUser") ? (
-              <>
-                <StripeCheckout
-                  token={onToken}
-                  stripeKey="pk_test_51Oeb4QGKxFmziudOyHXfdMKk0BEdBfLtYZmwlYkyEgN5zvEH0Usk9dFMUV68RmBzKEbs5Xg3vGUestw4CPiMST5g00kSHQ6EV6"
-                  name={room.name}
-                  amount={totalAmount * 100}
-                  currency="USD"
-                  disabled={isProcessing}
-                />
-                {showLoader && (
-                  <>
-                    <div style={{ marginTop: '10px' }}>
-                      <ProgressBar now={progress} label={`${progress}%`} />
-                    </div>
-                    <div style={{ marginTop: '10px' }}>
-                      <Spinner animation="border" variant="primary" />
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <Button variant="danger">
-                <Link
-                  style={{ textDecoration: 'none', color: 'white' }}
-                  to='/login'
-                >
-                  Login
-                </Link>
-              </Button>
-            )}
-          </div>
-          </div> 
-         
-         
         </Col>
       </Row>
     </Container>
@@ -228,8 +221,3 @@ const Booking = () => {
 };
 
 export default Booking;
-
-
-
-
-

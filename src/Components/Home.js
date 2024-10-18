@@ -3,7 +3,7 @@ import RoomContainer from "./RoomContainer";
 import { Col, Container, Row, Dropdown, DropdownButton } from "react-bootstrap";
 import Loader from "./Loader";
 import Error from "./Error";
-import './Home.css'
+import "./Home.css";
 import { DatePicker } from "antd";
 import moment from "moment";
 
@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://backendhotel-1.onrender.com/api/getAllRoom");
+        const response = await fetch("https://hotel--backend.up.railway.app/api/getAllRoom");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -33,16 +33,16 @@ const Home = () => {
       }
     };
 
-    fetchData(); 
+    fetchData();
   }, []);
 
   useEffect(() => {
     if (selectedRange) {
       const formattedFromDate = moment(
-        selectedRange[0].format("YYYY-MM-DD")
+        selectedRange[0].format("YYYY-MM-DD"),
       ).format("DD_MM_YYYY");
       const formattedToDate = moment(
-        selectedRange[1].format("YYYY-MM-DD")
+        selectedRange[1].format("YYYY-MM-DD"),
       ).format("DD_MM_YYYY");
 
       const tempRoom = originalData.filter((room) => {
@@ -59,7 +59,7 @@ const Home = () => {
     // Filter by selected room type
     if (selectedRoomType !== "All") {
       const filteredRooms = originalData.filter(
-        (room) => room.type.toLowerCase() === selectedRoomType.toLowerCase()
+        (room) => room.type.toLowerCase() === selectedRoomType.toLowerCase(),
       );
       setData(filteredRooms);
     } else {
@@ -86,7 +86,7 @@ const Home = () => {
     const searchTerm = e.target.value.toLowerCase();
 
     const filteredRooms = originalData.filter((room) =>
-      room.name.toLowerCase().startsWith(searchTerm)
+      room.name.toLowerCase().startsWith(searchTerm),
     );
 
     setData(filteredRooms);
@@ -114,8 +114,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Row
-        className="mt-4 bs"
+      <Row className="mt-4 bs"
         style={{
           justifyContent: "center",
           alignItems: "center",
@@ -126,15 +125,11 @@ const Home = () => {
       >
         <Col
           xl={4}
-      
           style={{ marginBottom: "20px", minWidth: "200px", padding: "0 10px" }}
         >
           <DatePicker.RangePicker
             format="DD_MM_YYYY"
-         
-            style={{ height: "40px", width: "100%"
-              
-             }}
+            style={{ height: "40px", width: "100%" }}
             onChange={filterDates}
           />
         </Col>
@@ -189,4 +184,3 @@ const Home = () => {
 };
 
 export default Home;
-

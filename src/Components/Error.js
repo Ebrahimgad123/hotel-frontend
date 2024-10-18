@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Error = () => {
   return (
     <div class="alert alert-danger" role="alert">
- Something went wrong Please Try again later..
-</div>
-  )
-}
+      Something went wrong Please Try again later..
+    </div>
+  );
+};
 
-export default Error
+export default Error;

@@ -1,40 +1,46 @@
-import React, { useState } from 'react';
-import './Register.css'; 
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState } from "react";
+import "./Register.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Register = () => {
   const navigate = useNavigate(); // Create a navigate function
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [cPassword, setCPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
 
   async function handleRegister(e) {
     e.preventDefault();
-    if (password === cPassword && username !== '' && email !== '' && password !== '' && cPassword !== '') {
+    if (
+      password === cPassword &&
+      username !== "" &&
+      email !== "" &&
+      password !== "" &&
+      cPassword !== ""
+    ) {
       const user = {
         username,
         email,
         password,
-        cPassword
+        cPassword,
       };
 
       try {
-        await axios.post('https://backendhotel-1.onrender.com/api/register', user);
-        alert('تم التسجيل بنجاح');
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setCPassword('');
+        await axios.post("https://hotel--backend.up.railway.app/register", user);
+        alert("تم التسجيل بنجاح");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setCPassword("");
         // Redirect to the login page after successful registration
-        navigate('/login');
+        navigate("/login");
       } catch (error) {
-        console.log('error', error);
-        alert('حدث خطأ أثناء التسجيل');
+        console.log("error", error);
+        alert("حدث خطأ أثناء التسجيل");
       }
     } else {
-      alert('هناك بيانات غير صحيحة، يرجى إدخال بيانات صحيحة');
+      alert("هناك بيانات غير صحيحة، يرجى إدخال بيانات صحيحة");
     }
   }
 
@@ -66,7 +72,7 @@ const Register = () => {
           value={cPassword}
           onChange={(e) => setCPassword(e.target.value)}
         />
-    
+
         <button type="submit">تسجيل</button>
       </form>
     </div>
@@ -74,5 +80,3 @@ const Register = () => {
 };
 
 export default Register;
-
-
