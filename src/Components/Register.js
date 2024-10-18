@@ -27,7 +27,7 @@ const Register = () => {
       };
 
       try {
-        await axios.post("https://hotel--backend.up.railway.app/register", user);
+        await axios.post("https://hotel--backend.up.railway.app/api/register", user);
         alert("تم التسجيل بنجاح");
         setUsername("");
         setEmail("");

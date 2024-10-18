@@ -14,7 +14,7 @@ const Login = () => {
       password,
     };
     try {
-      const result = (await axios.post("https://hotel--backend.up.railway.app/login", user))
+      const result = (await axios.post("https://hotel--backend.up.railway.app/api/login", user))
         .data;
       localStorage.setItem("currentUser", JSON.stringify(result));
       navigate("/home");
