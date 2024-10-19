@@ -9,16 +9,22 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
+  const [error, setError] = useState("");
 
   async function handleRegister(e) {
     e.preventDefault();
-    if (
-      password === cPassword &&
-      username !== "" &&
-      email !== "" &&
-      password !== "" &&
-      cPassword !== ""
-    ) {
+    if (!username) {
+      setError('username doesn’t exist')
+    }else if (!email){
+      setError('Email doesn’t exist')
+    }else if(!password  ){
+      setError('password doesn’t exist ')
+    }else if(!cPassword  ){
+    setError('confirm password doesn’t exist ')
+    }else if(password != cPassword ){
+  setError('password does not match')
+}
+    else{
       const user = {
         username,
         email,
@@ -39,41 +45,40 @@ const Register = () => {
         console.log("error", error);
         alert("حدث خطأ أثناء التسجيل");
       }
-    } else {
-      alert("هناك بيانات غير صحيحة، يرجى إدخال بيانات صحيحة");
     }
   }
 
   return (
     <div className="register__container">
       <form className="register__form" onSubmit={handleRegister}>
-        <h2>تسجيل حساب جديد</h2>
+        <h2>Sign Up</h2>
+        <p className="text-danger">{error}</p>
         <input
           type="text"
-          placeholder="اسم المستخدم"
+          placeholder="user name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="email"
-          placeholder="البريد الإلكتروني"
+          placeholder=" email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder=" كلمة المرور"
+          placeholder=" password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="تأكيد كلمة المرور"
+          placeholder="confirm password"
           value={cPassword}
           onChange={(e) => setCPassword(e.target.value)}
         />
 
-        <button type="submit">تسجيل</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

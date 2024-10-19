@@ -3,7 +3,7 @@
   height: 91vh;
   justify-content: center;
   align-items: center;
-  background-image: url("./457967541.jpg");
+  background-image: url("./login/457967541.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -19,7 +19,7 @@
   border-radius: 5px;
   background-color: #f9f9f9;
   text-align: center;
-  background-image: url("./login.jpg");
+  background-image: url("./login/login.jpg");
   background-repeat: no-repeat;
 }
 
@@ -49,4 +49,14 @@
 
 .register__form button:hover {
   background-color: #0056b3;
+}
+@media (max-width:700px) {
+  .register__form input {
+    width: 140%;
+    margin-left: -40px;
+  }
+  .register__form button {
+    width: 80%;
+    border-radius:60px;
+  }
 }

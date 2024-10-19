@@ -49,3 +49,15 @@
 .login__form button:hover {
   background-color: #0056b3;
 }
+
+
+@media (max-width:700px) {
+  .login__form input {
+    width: 140%;
+    margin-left: -40px;
+  }
+  .login__form button {
+    width: 80%;
+    border-radius:60px;
+  }
+}
